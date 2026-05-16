@@ -93,7 +93,7 @@ if st.session_state.questions_generated:
 
     if st.button("Generate Interview Report"):
 
-        filename = "generated_reports/interview_report.pdf"
+        filename = "interview_report.pdf"
 
         generate_report(
             filename,

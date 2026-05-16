@@ -1,7 +1,11 @@
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
+import os
 
 def generate_report(filename, questions, answers, scores):
+
+    # Save PDF directly in current directory
+    filename = os.path.basename(filename)
 
     doc = SimpleDocTemplate(filename)
 
@@ -19,11 +23,20 @@ def generate_report(filename, questions, answers, scores):
 
     for i in range(len(questions)):
 
-        q = Paragraph(f"<b>Question:</b> {questions[i]}", styles['BodyText'])
+        q = Paragraph(
+            f"<b>Question:</b> {questions[i]}",
+            styles['BodyText']
+        )
 
-        a = Paragraph(f"<b>Answer:</b> {answers[i]}", styles['BodyText'])
+        a = Paragraph(
+            f"<b>Answer:</b> {answers[i]}",
+            styles['BodyText']
+        )
 
-        s = Paragraph(f"<b>Score:</b> {scores[i]}/10", styles['BodyText'])
+        s = Paragraph(
+            f"<b>Score:</b> {scores[i]}/10",
+            styles['BodyText']
+        )
 
         elements.append(q)
         elements.append(a)
